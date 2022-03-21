@@ -1,8 +1,8 @@
-public class WordFind
+public class Wordle
 {
     public static void main(String[] args)
     {
-        WordFindRunner wordle = new WordFindRunner();
+        WordleRunner wordle = new WordleRunner();
         wordle.run();
     }
 }

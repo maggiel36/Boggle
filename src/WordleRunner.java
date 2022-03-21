@@ -1,8 +1,11 @@
-public class WordFindRunner
+public class WordleRunner
 {
+
+    private final String GREEN = "\u001B[32m";
+    private final String YELLOW = "\u001B[33m";
+
     public void run()
     {
-        public final String GREEN = ""
         System.out.println("How To Play:" +
                             "\nGuess the WORDLE in six tries" +
                             "\nEach guess must be a valid five-letter word." +
