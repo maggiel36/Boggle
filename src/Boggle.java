@@ -3,15 +3,30 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.Arrays;
 
+/**
+ * This class represents a Boggle object
+ *
+ * @author Maggie Li
+ */
 public class Boggle
 {
-
+    /** The playing status of the Boggle game */
     private boolean playing = true;
+
+    /** The words that the player has found */
     private ArrayList foundWords = new ArrayList<>();
 
+    /** All the possible words that can be found in the Boggle game */
     String[] words = {"yay", "sir", "sim", "say", "rim", "ray", "ram", "may", "air", "aim", "yays", "yams", "rims", "rays", "raya", "rams", "mays", "maya", "aria", "aims", "maria", "arias"};
+
+    /** The String array words is stored in this ArrayList answers */
     ArrayList<String> answers = new ArrayList<>(Arrays.asList(words));
 
+    /**
+     * Runs the Boggle game
+     * <p>
+     * While playing is true, the player can continue to find the words in the Boggle board, or enter "x" to quit the game, which will display all the answers in the Boggle board.
+     */
     public void play()
     {
         String[][] board = {{"y", "s", "m"},
@@ -41,11 +56,19 @@ public class Boggle
             }
 
             isWord(word);
-            endgame();
+            endGame();
         }
     }
 
-    public boolean isWord(String word)
+    /**
+     * Searches to see if the word that the player enters is part of the word list.
+     * <p>
+     * If the word that the player enters if valid, it will add the word to the foundWords ArrayList.
+     * If the word that the player enters has already been found by the player, it will notify the player that they have already found that word.
+     *
+     * @param word The word that the player enters
+     */
+    public void isWord(String word)
     {
         for (int i = 0; i < words.length; i++)
         {
@@ -62,17 +85,20 @@ public class Boggle
                 System.out.println("Found Word(s): " + foundWords + "\n");
             }
         }
-        return false;
     }
 
-    public void endgame()
+    /**
+     * Ends the game if the player has found all 22 words in the Boggle board.
+     * Prints a message congratulating the player.
+     */
+    public void endGame()
     {
         for (int i = 0; i <= foundWords.size(); i++)
         {
             if (i == 22)
             {
-                playing = false;
                 System.out.println("Good job! You have found all the possible words!");
+                playing = false;
             }
         }
     }
