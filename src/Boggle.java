@@ -1,18 +1,16 @@
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Boggle
 {
 
     private boolean playing = true;
-    private ArrayList correctWords = new ArrayList<>();
-
-    String[][] board = {{"y", "s", "m"},
-            {"y", "a", "i"},
-            {"a", "a", "r"}};
+    private ArrayList foundWords = new ArrayList<>();
 
     String[] words = {"yay", "sir", "sim", "say", "rim", "ray", "ram", "may", "air", "aim", "yays", "yams", "rims", "rays", "raya", "rams", "mays", "maya", "aria", "aims", "maria", "arias"};
+    ArrayList<String> answers = new ArrayList<>(Arrays.asList(words));
 
     public void play()
     {
@@ -39,11 +37,7 @@ public class Boggle
             if (word.equals("x"))
             {
                 playing = false;
-                System.out.print("Good try! All the possible answers were: ");
-                for (int i = 0; i < words.length; i++)
-                {
-                    System.out.print(words[i] + " ");
-                }
+                System.out.print("Good try! All the possible answers were: " + answers);
             }
 
             isWord(word);
@@ -57,24 +51,15 @@ public class Boggle
         {
             if (word.equals(words[i]))
             {
-                if (correctWords.contains(word))
+                if (foundWords.contains(word))
                 {
-                    System.out.println("Already Found");
-
-                    System.out.print("\033[H\033[2J");
-                    System.out.flush();
-
-                    System.out.println("Found Word(s): " + correctWords + "\n");
+                    System.out.println("You already found that word!");
                 }
                 else
                 {
-                    correctWords.add(word);
-
-                    System.out.print("\033[H\033[2J");
-                    System.out.flush();
-
-                    System.out.println("Found Word(s): " + correctWords);
+                    foundWords.add(word);
                 }
+                System.out.println("Found Word(s): " + foundWords + "\n");
             }
         }
         return false;
@@ -82,7 +67,7 @@ public class Boggle
 
     public void endgame()
     {
-        for (int i = 0; i <= correctWords.size(); i++)
+        for (int i = 0; i <= foundWords.size(); i++)
         {
             if (i == 22)
             {
@@ -91,5 +76,4 @@ public class Boggle
             }
         }
     }
-
 }
