@@ -25,7 +25,7 @@ public class Boggle
         System.out.println("Welcome to Boggle!\n");
         System.out.println("The goal of the game is to find as many words as you can in the 3x3 jumbled grid of 9 letters!");
         System.out.println("The letters can be in any direction - up, down, left, right, or diagonal.");
-        System.out.println("Letters can only be used per word, and words must be 3 letters or longer.\n");
+        System.out.println("Letters can only be once used per word, and words must be 3 letters or longer.\n");
 
         while (playing)
         {
